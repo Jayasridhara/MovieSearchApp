@@ -5,17 +5,20 @@ import MovieDetailsPage from "./pages/MovieDetailsPage";
 import { searchPageLoader } from "./Loader/searchPageLoader";
 import { movieDetailsLoader } from "./Loader/movieDetailsLoader";
 
+
 function App() {
 
   const routes= [
   {
     path: '/',
     element: <Layout />,
+    loader: searchPageLoader,
+    hydrateFallbackElement: <p>Loading SearchPage…</p>,
     children: [
       {
         index: true,
         element: <SearchPage />,
-        loader:searchPageLoader,
+        loader: searchPageLoader,
         hydrateFallbackElement: <p>Loading SearchPage…</p>,
       },
       {
@@ -39,7 +42,7 @@ function App() {
 });
   return (
     <>
-     <RouterProvider
+       <RouterProvider
       router={router}
       future={{
         v7_startTransition: true,
