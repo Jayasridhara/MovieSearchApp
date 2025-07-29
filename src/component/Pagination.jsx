@@ -26,13 +26,13 @@ const Pagination = ({ currentPage, totalResults, onPageChange }) => {
       {startPage > 1 && (
         <button
           onClick={() => onPageChange(startPage - 1)}
-          className="px-3 py-1 bg-gray-100 rounded"
+          className="px-3 py-1 bg-gray-100 rounded hidden lg:inline-block"
         >
           &laquo;
         </button>
       )}
-
-      {pageNumbers.map((pageNum) => (
+ <div className="hidden sm:flex gap-2">
+       {pageNumbers.map((pageNum) => (
         <button
           key={pageNum}
           onClick={() => onPageChange(pageNum)}
@@ -42,14 +42,15 @@ const Pagination = ({ currentPage, totalResults, onPageChange }) => {
               : 'bg-gray-100 hover:bg-gray-300'
           }`}
         >
-          {pageNum}
+          {pageNum} 
         </button>
       ))}
-
+ </div>
+     
       {endPage < totalPages && (
         <button
           onClick={() => onPageChange(endPage + 1)}
-          className="px-3 py-1 bg-gray-100 rounded"
+          className="px-3 py-1 bg-gray-100 rounded hidden lg:inline-block"
         >
           &raquo;
         </button>

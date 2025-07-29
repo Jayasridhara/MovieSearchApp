@@ -21,17 +21,17 @@ export default function Navbar({loaderData}) {
 
   }, [query, page, type, navigate]);
 
-  const handleSearch = () => {
-    if (searchTerm.trim() === '') return; 
+  const handleSearch = (term = searchTerm) => {
+  if (term.trim() === '') return;
 
-    // Don't duplicate
-    setSearchHistory(prev => {
-      const newHistory = [searchTerm, ...prev.filter(item => item !== searchTerm)];
-      return newHistory.slice(0, 5); // only keep last 2
-    });
+  setSearchHistory(prev => {
+    const newHistory = [term, ...prev.filter(item => item !== term)];
+    return newHistory.slice(0, 5);
+  });
 
-    navigate(`/?q=${searchTerm}&page=1&type=${type}`);
-  };
+  navigate(`/?q=${term}&page=1&type=${type}`);
+};
+
 
   const handleTypeChange = (selectedType) => {
     navigate(`/?q=${query}&page=1&type=${selectedType}`);

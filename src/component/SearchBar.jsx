@@ -10,7 +10,8 @@ const SearchBar = ({
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       setIsSearchFocused(false); // hide dropdown on search
-      onSearch();
+      onSearch(searchTerm);
+      setSearchTerm(item); 
     }
   };
 
@@ -30,7 +31,7 @@ const SearchBar = ({
         <button
           onClick={() => {
             setIsSearchFocused(false);
-            onSearch();
+            onSearch(searchTerm);
           }}
           className="bg-blue-500 text-white px-4 py-2 rounded"
         >
@@ -46,9 +47,9 @@ const SearchBar = ({
               <div
                 key={idx}
                 onMouseDown={() => {
-                  setSearchTerm(item);
-                  onSearch();
-                  setIsSearchFocused(false);
+                   setIsSearchFocused(false);
+                    onSearch(item);
+                    setSearchTerm(item);
                 }}
                 className="p-2 hover:bg-gray-100 cursor-pointer text-left"
               >

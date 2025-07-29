@@ -2,16 +2,22 @@
 
 import { Link } from 'react-router';
 import defaultImage from '../assets/default-image.jpg';
-
-const MovieCard = ({ movie }) => (
+const MovieCard = ({ movie }) =>{
+  const posterUrl =
+    movie.Poster && movie.Poster !== "N/A"
+      ? movie.Poster
+      : defaultImage;
+      
+console.log("posterUrl computed:", posterUrl);
+return(
   <Link to={`/movie/${movie.imdbID}`} className="block h-full group">
     <div className="bg-white rounded shadow py-2  h-full flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl" >
          <img
-          src={movie.Poster}
+          src={posterUrl}
           alt={movie.Title}
           onError={(e) => {
             e.currentTarget.onerror = null; // Prevent infinite loop
-            e.currentTarget.src = defaultImage;
+            e.currentTarget.src=defaultImage;
           }}
           className="w-full h-50 object-cover rounded"
         />
@@ -26,5 +32,6 @@ const MovieCard = ({ movie }) => (
     </div>
   </Link>
 );
+} 
 
 export default MovieCard;
