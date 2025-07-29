@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Layout from "./component/Layout";
-import SearchPage from "./pages/SearchPage";
+
 import MovieDetailsPage from "./pages/MovieDetailsPage";
 import { searchPageLoader } from "./Loader/searchPageLoader";
 import { movieDetailsLoader } from "./Loader/movieDetailsLoader";
+import SearchPage from "./component/SearchPage";
 
 
 function App() {

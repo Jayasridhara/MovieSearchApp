@@ -14,7 +14,7 @@ const SearchBar = ({
     }
   };
 
-  return (
+  return (  
     <div className="relative w-full sm:w-auto">
       <div className="flex gap-1 items-center justify-center w-full">
         <input
@@ -22,7 +22,7 @@ const SearchBar = ({
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={() => setIsSearchFocused(true)}
-          onBlur={() => setTimeout(() => setIsSearchFocused(false), 100)} // delay to allow click
+          onBlur={() => setTimeout(() => setIsSearchFocused(false), 150)} // delay to allow click
           onKeyDown={handleKeyDown}
           placeholder="Search movies..."
           className="p-2 border border-gray-300 rounded w-full"
