@@ -9,17 +9,23 @@ export default function Navbar({loaderData}) {
       
  const { movies, query, page, type, error } = useLoaderData();
   const navigate = useNavigate();
-  const [searchTerm, setSearchTerm] = useState(query);
+  const [searchTerm, setSearchTerm] = useState("");
   const [searchHistory, setSearchHistory] = useState([]);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const location = useLocation();
    const isDetailPage = location.pathname.startsWith('/movie/');
 
-  useEffect(() => {
-   setSearchTerm(query);    
+ useEffect(() => {
+  const params = new URLSearchParams(location.search);
+  const urlQuery = params.get('q');
 
-
-  }, [query, page, type, navigate]);
+  // Set search bar only if user actually searched
+  if (urlQuery) {
+    setSearchTerm(urlQuery);
+  } else {
+    setSearchTerm('');  // keeps bar empty on first load
+  }
+}, [location.search]);
 
   const handleSearch = (term = searchTerm) => {
   if (term.trim() === '') return;

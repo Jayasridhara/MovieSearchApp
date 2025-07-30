@@ -18,6 +18,7 @@ function Layout() {
     if (error) {
       setShowErrorPopup(true);
     }
+  
   }, [error]);
 
   return (

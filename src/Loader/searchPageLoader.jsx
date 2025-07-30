@@ -3,16 +3,16 @@ import { searchMovies } from "../services/omdbService";
 
 export const searchPageLoader = async ({ request }) => {
   const url = new URL(request.url);
-  const query = url.searchParams.get('q') || 'avengers';
+  const qParam  = url.searchParams.get('q');
   const page = parseInt(url.searchParams.get('page')) || 1;
   const type = url.searchParams.get('type') || '';
-
+  const query = qParam === null ? 'avengers' : qParam;
   const data = await searchMovies(query, page, type);
 
   if (data.Response === 'True') {
     return {
-      movies: data.Search,
-      totalResults: parseInt(data.totalResults),
+      movies: data.Search || [],
+      totalResults: parseInt(data.totalResults,10),
       query,
       page,
       type,
@@ -25,7 +25,7 @@ export const searchPageLoader = async ({ request }) => {
       query,
       page,
       type,
-      error: "Search result not found",  
+      error: data.Error || 'No movies found',
     };
   }
 };

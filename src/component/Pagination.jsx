@@ -26,7 +26,7 @@ const Pagination = ({ currentPage, totalResults, onPageChange }) => {
       {startPage > 1 && (
         <button
           onClick={() => onPageChange(startPage - 1)}
-          className="px-3 py-1 bg-gray-100 rounded hidden lg:inline-block"
+          className="px-3 py-1 bg-gray-100 rounded hidden lg:inline-block md:inline-block"
         >
           &laquo;
         </button>

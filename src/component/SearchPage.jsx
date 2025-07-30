@@ -12,8 +12,10 @@ export default function SearchPage() {
     navigate(`/?q=${query}&page=${newPage}&type=${type}`);
   };
   return (
+    
     <div className="">
         {!isDetailPage && (
+          
       <div className="flex-1 overflow-y-auto pt-[72px] pb-[64px] p-4 relative">
       {showErrorPopup && (
           <Popup
