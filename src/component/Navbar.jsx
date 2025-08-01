@@ -16,31 +16,36 @@ export default function Navbar({loaderData}) {
    const isDetailPage = location.pathname.startsWith('/movie/');
 
  useEffect(() => {
-  const params = new URLSearchParams(location.search);
-  const urlQuery = params.get('q');
+    const params = new URLSearchParams(location.search);
+    const urlQuery = params.get('q');
 
-  // Set search bar only if user actually searched
-  if (urlQuery) {
-    setSearchTerm(urlQuery);
-  } else {
-    setSearchTerm('');  // keeps bar empty on first load
-  }
-}, [location.search]);
+    // If there is a 'q' parameter in the URL, set the search term to its value.
+    if (urlQuery) {
+      setSearchTerm(urlQuery);
+    } else {
+      // Otherwise (like after a filter is applied), ensure the search term is empty.
+      setSearchTerm('');
+    }
+  }, [location.search]); // This effect now runs whenever the URL search string changes.
 
-  const handleSearch = (term = searchTerm) => {
-  if (term.trim() === '') return;
+  const handleSearch = (termOverride) => {
+    const termToSearch = (typeof termOverride === 'string' ? termOverride : searchTerm).trim();
+    
+    if (termToSearch === '') return;
 
-  setSearchHistory(prev => {
-    const newHistory = [term, ...prev.filter(item => item !== term)];
-    return newHistory.slice(0, 5);
-  });
+    setSearchHistory(prev => {
+      const newHistory = [termToSearch, ...prev.filter(item => item !== termToSearch)];
+      return newHistory.slice(0, 5);
+    });
 
-  navigate(`/?q=${term}&page=1&type=${type}`);
-};
-
+    // When searching, we always include the 'q' parameter.
+    navigate(`/?q=${termToSearch}&page=1&type=${type}`);
+  };
 
   const handleTypeChange = (selectedType) => {
-    navigate(`/?q=${query}&page=1&type=${selectedType}`);
+    setSearchTerm(''); // Clear the search bar visually.
+    // Navigate without a 'q' parameter. The useEffect above will handle keeping the search bar empty.
+    navigate(`/?page=1&type=${selectedType}`);
   };
 
   return (
@@ -62,6 +67,7 @@ export default function Navbar({loaderData}) {
                   <FilterDropdown
                     selectedType={type}
                     onChange={handleTypeChange}
+                    setSearchTerm={setSearchTerm}
                   />    
         </div>)}
       </div>

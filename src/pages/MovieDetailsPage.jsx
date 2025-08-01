@@ -1,6 +1,7 @@
 import { Link, useLoaderData, useNavigate } from "react-router";
 import defaultImage from '../assets/default-image.jpg';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 const MovieDetailsPage = () => {
 const movie = useLoaderData();
 const navigate=useNavigate();
@@ -37,13 +38,17 @@ const posterUrl =movie.Poster && movie.Poster !== "N/A"? movie.Poster: defaultIm
         </ul>
       </div>
 
-      <button
-        onClick={() => navigate(-1)}
-        className="self-start bg-blue-600 text-white px-5 py-2 rounded-lg transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 inline-flex items-center"
-      >
-        <span>Back to Search</span>
-        <span className="ml-2 transform transition-transform group-hover:translate-x-1">⬅️</span>
-      </button>
+   <button
+      onClick={() => navigate(-1)}
+      className="group self-start bg-blue-600 text-white px-5 py-2 rounded-lg transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 inline-flex items-center"
+    >
+      <span>Back to Search</span>
+      <FontAwesomeIcon
+        icon={faArrowLeft}
+        className="text-white group-hover:text-white transform group-hover:translate-x-1 transition duration-200"
+      />
+    </button>
+  
     </div>
   </div>
 );

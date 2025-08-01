@@ -2,11 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
-const FilterDropdown = ({ selectedType, onChange }) => {
+const FilterDropdown = ({ selectedType, onChange,setSearchTerm }) => {
   const [open, setOpen] = useState(false);
-  const ref = useRef(null);
 
+  const ref = useRef(null);
+ 
   useEffect(() => {
+   setSearchTerm('')
     const handleClickOutside = e => {
       if (ref.current && !ref.current.contains(e.target)) setOpen(false);
     };

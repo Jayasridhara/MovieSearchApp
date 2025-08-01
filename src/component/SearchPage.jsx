@@ -8,12 +8,27 @@ export default function SearchPage() {
   const navigate = useNavigate();
   const { movies, totalResults, query, page, type, error } = useLoaderData();
  const {showErrorPopup,setShowErrorPopup,isDetailPage}=useOutletContext()
-  const handlePageChange = (newPage) => {
-    navigate(`/?q=${query}&page=${newPage}&type=${type}`);
+   const handlePageChange = (newPage) => {
+    // Get the search parameters from the current URL
+    const currentParams = new URLSearchParams(location.search);
+    const currentQuery = currentParams.get('q');
+
+    // Build the new search parameters for the next page
+    const newParams = new URLSearchParams();
+    if (currentQuery) {
+      newParams.set('q', currentQuery); // Keep the existing query if it's there
+    }
+    newParams.set('page', newPage);
+    if (type) {
+      newParams.set('type', type);
+    }
+    
+    // Navigate to the new URL
+    navigate(`/?${newParams.toString()}`);
   };
   return (
     
-    <div className="">
+    <div className="flex flex-col min-h-screen">
         {!isDetailPage && (
           
       <div className="flex-1 overflow-y-auto pt-[72px] pb-[64px] p-4 relative">
