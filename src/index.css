@@ -1,2 +1,53 @@
 @import "tailwindcss";
 /* Add this to your main CSS file (e.g., index.css) */
+
+
+/* Load font files */
+@font-face {
+  font-family: "Jaro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Jaro-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Righteous";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Righteous-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Rowdies";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Rowdies-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/Lexend-Regular.ttf") format("truetype");
+}
+
+/* Declare theme font variables */
+@theme {
+  --font-jaro: "Jaro", sans-serif;
+  --font-righteous: "Righteous", sans-serif;
+  --font-rowdies: "Rowdies", sans-serif;
+    --font-poppins: "Poppins", sans-serif;
+    --font-lexend:"Lexend", sans-serif;
+}
+html, body, #root {
+  height: 100%;
+}

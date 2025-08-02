@@ -1,14 +1,19 @@
-import { Link, useLoaderData, useNavigate } from "react-router";
+import { Link, useLoaderData, useNavigate, useOutletContext } from "react-router";
 import defaultImage from '../assets/default-image.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 const MovieDetailsPage = () => {
+  const {isDetailPage}=useOutletContext();
 const movie = useLoaderData();
 const navigate=useNavigate();
 const posterUrl =movie.Poster && movie.Poster !== "N/A"? movie.Poster: defaultImage;
 
  return (
-  <div className="p-4 max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8">
+  
+<>
+{isDetailPage && (
+  <div className="p-4 max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 font-poppins">
     <img
       src={posterUrl}
       alt={movie.Title}
@@ -40,7 +45,7 @@ const posterUrl =movie.Poster && movie.Poster !== "N/A"? movie.Poster: defaultIm
 
    <button
       onClick={() => navigate(-1)}
-      className="group self-start bg-blue-600 text-white px-5 py-2 rounded-lg transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 inline-flex items-center"
+      className=" cursor-pointer group self-start bg-blue-600 text-white px-5 py-2 rounded-lg transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 inline-flex items-center"
     >
       <span>Back to Search</span>
       <FontAwesomeIcon
@@ -51,7 +56,8 @@ const posterUrl =movie.Poster && movie.Poster !== "N/A"? movie.Poster: defaultIm
   
     </div>
   </div>
-);
-};
+)}
+</>
+);};
 
 export default MovieDetailsPage;

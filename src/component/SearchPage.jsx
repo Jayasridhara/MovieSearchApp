@@ -7,7 +7,7 @@ import Popup from './Popup';
 export default function SearchPage() {
   const navigate = useNavigate();
   const { movies, totalResults, query, page, type, error } = useLoaderData();
- const {showErrorPopup,setShowErrorPopup,isDetailPage}=useOutletContext()
+ const {showErrorPopup,setShowErrorPopup,isDetailPage}=useOutletContext();
    const handlePageChange = (newPage) => {
     // Get the search parameters from the current URL
     const currentParams = new URLSearchParams(location.search);
@@ -28,13 +28,13 @@ export default function SearchPage() {
   };
   return (
     
-    <div className="flex flex-col">
+    <div className="flex flex-col h-full">
         {!isDetailPage && (
           
-      <div className="= overflow-y-auto pt-[72px] pb-[64px] p-4 grow">
+      <div className=" pt-[72px] pb-[64px] p-4 flex-grow ">
       {showErrorPopup && (
           <Popup
-            message="No movies found for this search."
+            message="No movies found for this search."  
             onClose={() => {
               setShowErrorPopup(false);
               navigate('/'); // Clear query params after user confirms
@@ -43,7 +43,7 @@ export default function SearchPage() {
         )}
 
         {movies.length ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-full font-poppins">
             {movies.filter(m => m.Poster !== 'N/A').slice(0, 8).map(movie => (
               <MovieCard key={movie.imdbID} movie={movie} />
             ))}
@@ -52,8 +52,9 @@ export default function SearchPage() {
           <p className="text-center text-gray-500 mt-10">No movies found.</p>
         )}
       </div>
+      
     )}
-       <div className="fixed bottom-0 left-0 w-full bg-white z-20 pb-2">
+       <div className="fixed bottom-0 left-0 w-full bg-white z-20 pb-2 font-poppins">
         <Pagination
           currentPage={page}
           totalResults={totalResults}

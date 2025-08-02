@@ -22,7 +22,7 @@ function Layout() {
   }, [error]);
 
   return (
-    <div>
+    <div className="h-full">
      
          <Navbar loaderData={loaderData}/>
         <Outlet context={{showErrorPopup,setShowErrorPopup,isDetailPage,navigate}}/>

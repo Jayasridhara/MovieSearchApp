@@ -50,12 +50,12 @@ export default function Navbar({loaderData}) {
 
   return (
         <>
-        <div className="fixed top-0 left-0 w-full bg-white z-20 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-center">
+        <div className="fixed top-0 left-0 w-full bg-white z-20 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-center ">
         <div>
-          <h1 className="text-2xl font-bold whitespace-nowrap sm:mr-4">🎬 Movie Search App</h1>
+          <h1 className="text-2xl font-bold whitespace-nowrap sm:mr-4 font-lexend ">🎬 Cine Search X</h1>
         </div>
         {!isDetailPage && (
-        <div className='flex gap-4'>
+        <div className='flex gap-4 font-poppins'>
                     <SearchBar
                     searchTerm={searchTerm}
                     setSearchTerm={setSearchTerm}
