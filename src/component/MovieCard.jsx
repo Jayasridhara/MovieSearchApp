@@ -8,7 +8,6 @@ const MovieCard = ({ movie }) =>{
       ? movie.Poster
       : defaultImage;
       
-console.log("posterUrl computed:", posterUrl);
 return(
   <Link to={`/movie/${movie.imdbID}`} className="block  group">
     <div className="bg-white rounded shadow py-2  flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl" >

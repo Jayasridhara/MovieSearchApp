@@ -28,10 +28,10 @@ export default function SearchPage() {
   };
   return (
     
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col">
         {!isDetailPage && (
           
-      <div className="flex-1 overflow-y-auto pt-[72px] pb-[64px] p-4 relative">
+      <div className="= overflow-y-auto pt-[72px] pb-[64px] p-4 grow">
       {showErrorPopup && (
           <Popup
             message="No movies found for this search."
