@@ -44,7 +44,7 @@ export default function SearchPage() {
 
         {movies.length ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full font-poppins">
-            {movies.filter(m => m.Poster !== 'N/A').slice(0, 10).map(movie => (
+            {movies.filter(m => m.Poster !== 'N/A').slice(0, 9).map(movie => (
               <MovieCard key={movie.imdbID} movie={movie} />
             ))}
           </div>
