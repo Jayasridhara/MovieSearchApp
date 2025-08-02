@@ -54,7 +54,7 @@ export default function SearchPage() {
       </div>
       
     )}
-       <div className="fixed bottom-0 left-0 w-full bg-white z-20 pb-2 font-poppins">
+       <div className="fixed bottom-0 left-0 w-full bg-white z-20 p-2 font-poppins">
         <Pagination
           currentPage={page}
           totalResults={totalResults}
