@@ -1,7 +1,7 @@
 import { Outlet, useLoaderData, useLocation, useNavigate } from "react-router"
 import Navbar from "./Navbar"
-import { useEffect, useState } from "react";
-
+import { createContext, useEffect, useState } from "react";
+export const MovieContext = createContext();
 function Layout() {
 
    const loaderData = useLoaderData();
@@ -23,9 +23,11 @@ function Layout() {
 
   return (
     <div className="h-full">
-     
+     <MovieContext.Provider value={{showErrorPopup,setShowErrorPopup,isDetailPage,navigate}}>
          <Navbar loaderData={loaderData}/>
-        <Outlet context={{showErrorPopup,setShowErrorPopup,isDetailPage,navigate}}/>
+          <Outlet />
+     </MovieContext.Provider>
+        
       
       
     </div>

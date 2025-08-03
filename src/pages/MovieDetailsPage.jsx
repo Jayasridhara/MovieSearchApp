@@ -2,9 +2,11 @@ import { Link, useLoaderData, useNavigate, useOutletContext } from "react-router
 import defaultImage from '../assets/default-image.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { useContext } from "react";
+import { MovieContext } from "../component/Layout";
 
 const MovieDetailsPage = () => {
-  const {isDetailPage}=useOutletContext();
+  const {isDetailPage}=useContext(MovieContext);
 const movie = useLoaderData();
 const navigate=useNavigate();
 const posterUrl =movie.Poster && movie.Poster !== "N/A"? movie.Poster: defaultImage;
@@ -44,7 +46,7 @@ const posterUrl =movie.Poster && movie.Poster !== "N/A"? movie.Poster: defaultIm
       </div>
 
    <button
-      onClick={() => navigate(-1)}
+      onClick={() => navigate("/")}
       className=" cursor-pointer group self-start bg-blue-600 text-white px-5 py-2 rounded-lg transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 inline-flex items-center"
     >
       <span>Back to Search</span>

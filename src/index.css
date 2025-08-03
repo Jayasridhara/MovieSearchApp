@@ -2,36 +2,16 @@
 /* Add this to your main CSS file (e.g., index.css) */
 
 
-/* Load font files */
-@font-face {
-  font-family: "Jaro";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/Jaro-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Righteous";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/Righteous-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Rowdies";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/Rowdies-Regular.ttf") format("truetype");
-}
 
 @font-face {
   font-family: "Poppins";
+  src: url("/fonts/Poppins-Regular.woff2") format("woff2"),
+       url("/fonts/Poppins-Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/Poppins-Regular.ttf") format("truetype");
 }
+
 @font-face {
   font-family: "Lexend";
   font-style: normal;
@@ -42,9 +22,7 @@
 
 /* Declare theme font variables */
 @theme {
-  --font-jaro: "Jaro", sans-serif;
-  --font-righteous: "Righteous", sans-serif;
-  --font-rowdies: "Rowdies", sans-serif;
+ 
     --font-poppins: "Poppins", sans-serif;
     --font-lexend:"Lexend", sans-serif;
 }

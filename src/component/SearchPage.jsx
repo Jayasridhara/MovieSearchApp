@@ -3,11 +3,13 @@ import {  useLoaderData, useNavigate, useOutletContext } from 'react-router';
 import Pagination from './Pagination';
 import MovieCard from './MovieCard';
 import Popup from './Popup';
+import { useContext } from 'react';
+import { MovieContext } from './Layout';
 
 export default function SearchPage() {
   const navigate = useNavigate();
   const { movies, totalResults, query, page, type, error } = useLoaderData();
- const {showErrorPopup,setShowErrorPopup,isDetailPage}=useOutletContext();
+ const {showErrorPopup,setShowErrorPopup,isDetailPage}=useContext(MovieContext);
    const handlePageChange = (newPage) => {
     // Get the search parameters from the current URL
     const currentParams = new URLSearchParams(location.search);
