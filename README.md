@@ -1,12 +1,26 @@
-# React + Vite
+#This React application allows users to:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Search movies by title.
 
-Currently, two official plugins are available:
+View movie details by ID.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Navigate using nested routes, with loader functions handling data fetching while showing animated placeholders.
 
-## Expanding the ESLint configuration
+It's built with React Router v7 via createBrowserRouter, leveraging loader-based routing, errorElement, and partial hydration for fast, SSR-compatible experiences.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📁 Project Structure
+src/
+  assets/
+    loading.gif           ← fallback animation
+  component/
+    Layout.tsx            ← Defines header + <Outlet>
+    SearchPage.tsx        ← Input and search results
+  pages/
+    MovieDetailsPage.tsx  ← Detailed info about a single movie
+  Loader/
+    searchPageLoader.ts   ← Fetches search results
+    movieDetailsLoader.ts ← Fetches data for a movie ID
+  App.tsx                 ← Main router config with `createBrowserRouter`
+  index.tsx               ← Renders App
+public/
+  index.html

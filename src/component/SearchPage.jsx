@@ -9,7 +9,7 @@ import { MovieContext } from './Layout';
 export default function SearchPage() {
   const navigate = useNavigate();
   const { movies, totalResults, query, page, type, error } = useLoaderData();
- const {showErrorPopup,setShowErrorPopup,isDetailPage}=useContext(MovieContext);
+ const {showErrorPopup,setShowErrorPopup}=useContext(MovieContext);
    const handlePageChange = (newPage) => {
     // Get the search parameters from the current URL
     const currentParams = new URLSearchParams(location.search);
@@ -30,9 +30,7 @@ export default function SearchPage() {
   };
   return (
     
-    <div className="flex flex-col h-full">
-        {!isDetailPage && (
-          
+    <div className="flex flex-col h-full">      
       <div className=" pt-[72px] pb-[64px] p-4 flex-grow ">
       {showErrorPopup && (
           <Popup
@@ -54,8 +52,6 @@ export default function SearchPage() {
           <p className="text-center text-gray-500 mt-10">No movies found.</p>
         )}
       </div>
-      
-    )}
        <div className="fixed bottom-0 left-0 w-full bg-white z-20 p-2 font-poppins">
         <Pagination
           currentPage={page}

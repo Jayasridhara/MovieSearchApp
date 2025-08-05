@@ -17,7 +17,7 @@ return(
           onError={(e) => {
             e.currentTarget.onerror = null; // Prevent infinite loop
             e.currentTarget.src=defaultImage;
-          }}
+          }}  
           className="w-full h-50  object-cover rounded"
         />
       <div className="mt-2 flex flex-col justify-between flex-grow px-2">

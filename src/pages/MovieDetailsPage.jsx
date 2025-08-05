@@ -2,11 +2,10 @@ import { Link, useLoaderData, useNavigate, useOutletContext } from "react-router
 import defaultImage from '../assets/default-image.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { useContext } from "react";
-import { MovieContext } from "../component/Layout";
+
 
 const MovieDetailsPage = () => {
-  const {isDetailPage}=useContext(MovieContext);
+ 
 const movie = useLoaderData();
 const navigate=useNavigate();
 const posterUrl =movie.Poster && movie.Poster !== "N/A"? movie.Poster: defaultImage;
@@ -14,7 +13,7 @@ const posterUrl =movie.Poster && movie.Poster !== "N/A"? movie.Poster: defaultIm
  return (
   
 <>
-{isDetailPage && (
+
   <div className="p-4 max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 font-poppins">
     <img
       src={posterUrl}
@@ -58,7 +57,7 @@ const posterUrl =movie.Poster && movie.Poster !== "N/A"? movie.Poster: defaultIm
   
     </div>
   </div>
-)}
+
 </>
 );};
 
