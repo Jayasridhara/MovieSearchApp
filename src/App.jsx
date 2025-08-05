@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import Layout from "./component/Layout";
 import loading  from "./assets/loding.gif"
 import MovieDetailsPage from "./pages/MovieDetailsPage";
@@ -29,6 +29,11 @@ function App() {
         errorElement: <p className="p-4 text-red-500">Movie not found or failed to load.</p>,
         hydrateFallbackElement:  <div className="flex h-screen justify-center items-center"><img src={loading} alt="Loading…" className="mx-auto my-10" /></div> ,
       },
+       {
+          path: "*",
+          element: <Navigate to="/" replace />,
+          loader: () => redirect("/"),
+        },
     ],
   },
 ];
